@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { GetAll } from '@/service/query/get-all';
 import { productTypes } from '@/service/types/types';
@@ -76,4 +76,11 @@ const SearchPage = () => {
   );
 };
 
-export default SearchPage;
+
+const Page = () => (
+  <Suspense fallback={<div>Yuklanmoqda...</div>}>
+    <SearchPage />
+  </Suspense>
+);
+
+export default Page;
